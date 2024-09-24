@@ -26,14 +26,14 @@ pushd sgoinfre/vms
     cat > start_debian << EOF
 #!bin/bash
 
-qemu-system-x86_64 \
-   -m 8G \
-   -smp 8 \
-   -cpu host \
-   -net user,hostfwd=tcp::22222-:22 \
-   -net nic \
-   -enable-kvm \
-   -daemonize \
+qemu-system-x86_64 \\
+   -m 8G \\
+   -smp 8 \\
+   -cpu host \\
+   -net user,hostfwd=tcp::22222-:22 \\
+   -net nic \\
+   -enable-kvm \\
+   -daemonize \\
    -hda ~/sgoinfre/vms/mydebian.qcow2
    # if u want to use yout vm in fullscreen uncomment the following lines
    #-vga virtio
