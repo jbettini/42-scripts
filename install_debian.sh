@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 TXT_RED="\033[1;31m"
 TXT_GREEN="\033[1;32m"
