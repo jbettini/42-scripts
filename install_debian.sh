@@ -24,7 +24,7 @@ pushd sgoinfre/vms
 
     print_color "$TXT_YELLOW" "Starting script created in \"~/sgoinfre/vms/start_debian\"\n"
     cat > start_debian << EOF
-#!bin/bash
+#!/bin/bash
 
 qemu-system-x86_64 \\
    -m 8G \\
