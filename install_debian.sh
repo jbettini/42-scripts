@@ -20,7 +20,7 @@ pushd sgoinfre/vms
     print_color "$TXT_YELLOW" "Creating an virtual hard disk ...\n"
     curl -Os https://chuangtzu.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-12.7.0-amd64-netinst.iso
 
-    qemu-img create -f qcow2 mydebian.qcow2 20G &>/dev/null
+    qemu-img create -f qcow2 preallocation=full mydebian.qcow2 12G &>/dev/null
 
     print_color "$TXT_YELLOW" "Starting script created in \"~/sgoinfre/vms/start_debian\"\n"
     cat > start_debian << EOF
@@ -39,6 +39,7 @@ qemu-system-x86_64 \\
    #-vga virtio
    #-full-screen
 EOF
+    chmod 777 start_debian
     print_color "$TXT_YELLOW" "Starting Debian installation...\n"
     qemu-system-x86_64 \
         -m 8G \
