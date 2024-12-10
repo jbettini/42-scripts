@@ -18,8 +18,8 @@ mkdir -vp sgoinfre/vms
 pushd sgoinfre/vms
 
     print_color "$TXT_YELLOW" "Creating an virtual hard disk ...\n"
-    curl -Os https://chuangtzu.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-12.7.0-amd64-netinst.iso
-
+    curl -Os https://chuangtzu.ftp.acc.umu.se/debian-cd/current/amd64/iso-cd/debian-12.8.0-amd64-netinst.iso
+    mv debian-12.8.0-amd64-netinst.iso debianrom.iso
     qemu-img create -f qcow2 -o preallocation=full mydebian.qcow2 12G &>/dev/null
 
     print_color "$TXT_YELLOW" "Starting script created in \"~/sgoinfre/vms/start_debian\"\n"
@@ -48,9 +48,9 @@ EOF
         -net user,hostfwd=tcp::22222-:22 \
         -net nic \
         -enable-kvm \
-        -cdrom debian-12.7.0-amd64-netinst.iso \
+        -cdrom debianrom.iso \
         -daemonize \
         -hda mydebian.qcow2
     sleep 5
-    rm -rf ~/sgoinfre/vms/debian-12.7.0-amd64-netinst.iso
+    rm -rf ~/sgoinfre/vms/debianrom.iso
 popd
